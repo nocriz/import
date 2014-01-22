@@ -8,14 +8,13 @@
 
 use Nocriz\Import\AbstractAlgorithm as AbstractAlgorithm;
 use Nocriz\Import\Container as Container;
-use \StdClass;
-use \RuntimeException;
+use \StdClass as StdClass;
 
-class Algorithm99 extends AbstractAlgorithm {
+class AlgorithmCSV extends AbstractAlgorithm {
   /**
    * @var string
    */
-  protected $type = '99';
+  protected $type = 'csv';
 
   /**
    * @param   Container $container
@@ -31,7 +30,16 @@ class Algorithm99 extends AbstractAlgorithm {
    */
   public function execute() {
     if ( $this->acceptable ) {
-      
+
+      $csvData = $this->container->gets();
+      $csvDelim = ";";
+      $csvEnclosure = '"';
+      $csvEscape = '\\';
+
+      $csv = str_getcsv($csvData, $csvDelim, $csvEnclosure, $csvEscape);
+
+      $this->container->addLine( $csv );
+
     }
   }
 }

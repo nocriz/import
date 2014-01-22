@@ -36,6 +36,8 @@ class Importer {
                                         $container->execute();
                                 }
                         }
+                        $this->data = $container->getLine();
+                        $container->finalize();
                 } else {
                         throw new BadMethodCallException( 'Nenhum algorítimo de importação definido.' );
                 }

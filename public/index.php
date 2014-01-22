@@ -29,8 +29,8 @@
 require __DIR__.'/../app/bootstrap.php';
 
 
-$file_path = __DIR__ . DS . 'uploads' . DS . 'test.txt';
-var_dump($file_path);
+$file_path = __DIR__ . DS . 'uploads' . DS . 'frete.csv';
+
 /*
 *   Exporta dados do banco de dados para um arquivo
 */
@@ -39,6 +39,9 @@ $importer = new Nocriz\Import\Importer;
 /*
 * Define o algoritimo de exportação a ser utilizado
 */
-$importer->addAlgorithm( new Nocriz\Import\Algorithm\Algorithm01() );
-$importer->addAlgorithm( new Nocriz\Import\Algorithm\Algorithm99() );
+$importer->addAlgorithm( new Nocriz\Import\Algorithm\AlgorithmCSV() );
+//$importer->addAlgorithm( new Nocriz\Import\Algorithm\Algorithm99() );
 $importer->import( new Nocriz\Import\Container( $file_path ) );
+
+echo "<pre>";
+var_dump($importer->data);
