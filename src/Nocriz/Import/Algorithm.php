@@ -6,7 +6,8 @@
  * @author João Batista Neto
  * @copyright iMasters Fórum
  */
-interface Algorithm {
+interface Algorithm
+{
         /**
          * Define o contexto do algorítimo.
          * @param       Container $container

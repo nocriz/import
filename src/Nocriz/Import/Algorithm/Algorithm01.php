@@ -8,28 +8,31 @@
 
 use Nocriz\Import\AbstractAlgorithm as AbstractAlgorithm;
 use Nocriz\Import\Container as Container;
-use \StdClass as StdClass;
 
-class Algorithm01 extends AbstractAlgorithm {
+class Algorithm01 extends AbstractAlgorithm
+{
   /**
    * @var string
    */
-  protected $type = '1';
+  protected $type = '01';
 
   /**
    * @param   Container $container
    * @return  boolean
    */
-  public function accept( Container $container ) {
+  public function accept(Container $container)
+  {
       $this->container = $container;
+
       return $this->acceptable = true;
   }
 
   /**
    * @see Algorithm::execute()
    */
-  public function execute() {
-    if ( $this->acceptable ) {
+  public function execute()
+  {
+    if ($this->acceptable) {
       $line = array();
       $this->container->seek( 4 );
 

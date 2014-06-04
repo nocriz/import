@@ -1,0 +1,31 @@
+/*
+echo "<pre>";
+$columns = array();
+$registers = array();
+$x=25;
+foreach ($importer->data as $key => $value) {
+    if (count($value) == $x+1) {
+        for ($i=0; $i < $x; $i++) {
+            $val = trim(utf8_decode($value[$i]));
+            if ($key == 0) {
+                $columns[] = $val;
+            } else {
+                $registers[$key][$columns[$i]] = $val;
+            }
+        }
+    }
+}
+
+foreach($registers as $register) {
+    $cep = preg_replace('/\D/', '', $register['cep'].$register['cepdv']);
+    if (strlen($cep)>0) {
+        $sql = "UPDATE `sistemaf_sistema`.`cliente`";
+        $sql .= " SET `cep` = '" . $cep . "',";
+        $sql .= " `estado` = '" . $register['estado'] . "'";
+        //$sql = "SELECT * FROM cliente";
+        $sql .= " WHERE `cliente`.`nome` = '" . addslashes($register['nome']). "'";
+        $sql .= " AND `cliente`.`obs` = '" . addslashes($register['obs']). "'";
+        echo $sql.";\n"; //echo "<br>";
+    }
+}
+*/

@@ -2,15 +2,15 @@
 
 /**
  * Classe Clientes
- * @author João Batista Neto
- * @copyright iMasters Fórum
+ * @author Ramon Barros
+ * @copyright Nocriz
  */
 
 use Nocriz\Import\AbstractAlgorithm as AbstractAlgorithm;
 use Nocriz\Import\Container as Container;
-use \StdClass as StdClass;
 
-class AlgorithmCSV extends AbstractAlgorithm {
+class AlgorithmCSV extends AbstractAlgorithm
+{
   /**
    * @var string
    */
@@ -20,16 +20,19 @@ class AlgorithmCSV extends AbstractAlgorithm {
    * @param   Container $container
    * @return  boolean
    */
-  public function accept( Container $container ) {
+  public function accept(Container $container)
+  {
       $this->container = $container;
+
       return $this->acceptable = true;
   }
 
   /**
    * @see Algorithm::execute()
    */
-  public function execute() {
-    if ( $this->acceptable ) {
+  public function execute()
+  {
+    if ($this->acceptable) {
 
       $csvData = $this->container->gets();
       $csvDelim = ";";

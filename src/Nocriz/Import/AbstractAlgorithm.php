@@ -13,7 +13,8 @@ use Nocriz\Import\Container as Container;
 /**
  * Base para implementação do algorítimo de importação.
  */
-abstract class AbstractAlgorithm implements Algorithm {
+abstract class AbstractAlgorithm implements Algorithm
+{
     /**
      * @var boolean
      */
@@ -30,10 +31,11 @@ abstract class AbstractAlgorithm implements Algorithm {
     protected $type;
 
     /**
-     * @param   Container $container
-     * @return  boolean
+     * @param  Container $container
+     * @return boolean
      */
-    public function accept( Container $container ) {
+    public function accept(Container $container)
+    {
         if ( $container->read( 1 ) != $this->type ) {
             $container->seek( -1 );
 

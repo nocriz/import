@@ -9,7 +9,7 @@
  */
 
 /**
- * Nocriz API 
+ * Nocriz API
  *
  * @package  Math
  * @author   Ramon Barros <contato@ramon-barros.com>
@@ -33,8 +33,7 @@ header('Last-Modified: '.gmdate('D, d M Y H:i:s', $time).'GMT');
 |
 */
 
-if ( ! extension_loaded('mcrypt'))
-{
+if ( ! extension_loaded('mcrypt')) {
     die('Lemee requires the Mcrypt PHP extension.'.PHP_EOL);
     exit(1);
 }
@@ -44,14 +43,14 @@ if ( ! extension_loaded('mcrypt'))
 | Register The Auto Loader
 |--------------------------------------------------------------------------
 |
-| This application is installed by the Composer, 
+| This application is installed by the Composer,
 | that provides a class loader automatically.
 | Use it to seamlessly and feel free to relax.
 |
 */
 
 $composer_autoload = APP_ROOT.DS.'vendor'.DS.'autoload.php';
-if(!file_exists($composer_autoload)){
+if (!file_exists($composer_autoload)) {
     die('Please use the composer to install http://getcomposer.org');
 }
 require $composer_autoload;

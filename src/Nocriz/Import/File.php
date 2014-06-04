@@ -6,7 +6,8 @@
  * @copyright iMasters Fórum
  */
 
-class File {
+class File
+{
         /**
          * @var resource
          */
@@ -32,12 +33,13 @@ class File {
          * @param       string $filename
          * @throws      RuntimeException
          */
-        public function __construct( $filename ) {
+        public function __construct($filename)
+        {
                 if ( is_file( $filename ) && is_readable( $filename ) ) {
                         if ( is_writable( $filename ) ) {
                                 $this->mode = 'r+';
                         }
-                } else if ( is_writable( dirname( $filename ) ) ) {
+                } elseif ( is_writable( dirname( $filename ) ) ) {
                         $this->mode = 'w+';
                 } else {
                         throw new \RuntimeException( 'Sem permissões para criar o arquivo.' );
@@ -49,7 +51,8 @@ class File {
         /**
          * Destroi o objeto e fecha o arquivo se estiver aberto.
          */
-        public function __destruct() {
+        public function __destruct()
+        {
                 if ( is_resource( $this->fh ) ) {
                         $this->close();
                 }
@@ -59,8 +62,9 @@ class File {
          * Verifica se o ponteiro de arquivo está no início.
          * @return      boolean
          */
-        public function bof() {
-                if ( $this->opened ) {
+        public function bof()
+        {
+                if ($this->opened) {
                         return $this->tell() == 0;
                 }
 
@@ -70,8 +74,9 @@ class File {
         /**
          * Fecha o arquivo.
          */
-        public function close() {
-                if ( $this->opened ) {
+        public function close()
+        {
+                if ($this->opened) {
                         fclose( $this->fh );
                         $this->opened = false;
                 }
@@ -81,8 +86,9 @@ class File {
          * Verifica se o ponteiro de arquivo está no final.
          * @return      boolean
          */
-        public function eof() {
-                if ( $this->opened ) {
+        public function eof()
+        {
+                if ($this->opened) {
                         return feof( $this->fh );
                 }
 
@@ -94,8 +100,9 @@ class File {
          * @param       integer $length
          * @return      integer
          */
-        public function gets( $length = 1024 ) {
-                if ( $this->opened ) {
+        public function gets($length = 1024)
+        {
+                if ($this->opened) {
                         return fgets( $this->fh , $length );
                 }
         }
@@ -105,8 +112,9 @@ class File {
          * @return      boolean
          * @throws      RuntimeException
          */
-        public function open() {
-                if ( !$this->opened ) {
+        public function open()
+        {
+                if (!$this->opened) {
                         $fh = fopen( $this->filename , $this->mode );
 
                         if ( is_resource( $fh ) ) {
@@ -125,8 +133,9 @@ class File {
          * Lê uma porção de bytes do arquivo.
          * @param       integer $length
          */
-        public function read( $length = 1 ) {
-                if ( $this->opened ) {
+        public function read($length = 1)
+        {
+                if ($this->opened) {
                         return fread( $this->fh , $length );
                 }
         }
@@ -136,8 +145,9 @@ class File {
          * @param       integer $offset
          * @param       integer $whence
          */
-        public function seek( $offset , $whence = SEEK_CUR ) {
-                if ( $this->opened ) {
+        public function seek($offset , $whence = SEEK_CUR)
+        {
+                if ($this->opened) {
                         return fseek( $this->fh , $offset , $whence ) == 0;
                 }
 
@@ -148,8 +158,9 @@ class File {
          * Recupera a posição do ponteiro do arquivo.
          * @return      integer
          */
-        public function tell() {
-                if ( $this->opened ) {
+        public function tell()
+        {
+                if ($this->opened) {
                         $tell = ftell( $this->fh );
 
                         return $tell === false ? -1 : $tell;
@@ -163,8 +174,9 @@ class File {
          * @param       string $data
          * @return      integer
          */
-        public function write( $data ) {
-                if ( $this->opened ) {
+        public function write($data)
+        {
+                if ($this->opened) {
                         return fwrite( $this->fh , $data , strlen( $data ) );
                 }
 

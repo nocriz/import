@@ -1,4 +1,4 @@
-<?php namespace Fraction;
+<?php namespace Nocriz;
 
 abstract class AbstractTest extends \PHPUnit_Framework_TestCase
 {
